@@ -9,16 +9,23 @@
     <img src="http://i.giphy.com/5UkoFNFWAPS00.gif" width=50% alt="coffe cup">
     <div id="time"></div>
   </div>
+  <audio id="done" src="http://www.daverudolf.com/audio/harp%20gliss.wav" preload="auto"></audio>
+
   <style>
     body {
         background-color: linen;
     }
     .coffeeTimer {
         color: maroon;
-        margin-left: 40px;
+        margin: 20px 0 0 40px;
     }
   </style>
+
   <script type="text/javascript">
+  function playSound() {
+    document.getElementById('done').play();
+  }
+
   function startTimer(duration, display) {
       var timer = duration, minutes, seconds;
       setInterval(function () {
@@ -31,7 +38,8 @@
           display.textContent = minutes + ":" + seconds;
 
           if (--timer < 0) {
-              timer = duration;
+            timer = null;
+            playSound();
           }
       }, 1000);
   }
@@ -42,6 +50,6 @@
       startTimer(fiveMinutes, display);
   };
   </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 </body>
 </html>
