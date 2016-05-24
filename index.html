@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coffee Timer</title>
+</head>
+<body>
+  <div class="coffeeTimer">
+    <img src="http://i.giphy.com/5UkoFNFWAPS00.gif" width=50% alt="coffe cup">
+    <div id="time"></div>
+  </div>
+  <style>
+    body {
+        background-color: linen;
+    }
+    .coffeeTimer {
+        color: maroon;
+        margin-left: 40px;
+    }
+  </style>
+  <script type="text/javascript">
+  function startTimer(duration, display) {
+      var timer = duration, minutes, seconds;
+      setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          display.textContent = minutes + ":" + seconds;
+
+          if (--timer < 0) {
+              timer = duration;
+          }
+      }, 1000);
+  }
+
+  window.onload = function () {
+      var fiveMinutes = 60 * 4,
+          display = document.querySelector('#time');
+      startTimer(fiveMinutes, display);
+  };
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</body>
+</html>
